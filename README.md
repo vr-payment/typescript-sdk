@@ -1,1 +1,164 @@
-# typescript-sdk
+# VRPay TypeScript Library
+
+The VRPay TypeScript library wraps around the VRPay API. This library facilitates your interaction with various services such as transactions, accounts, and subscriptions.
+
+
+## Documentation
+
+[VRPay Web Service API](https://gateway.vr-payment.de/doc/api/web-service)
+
+## Requirements
+
+- npm 6+
+
+## Installation
+>**_NOTE:_** Highly recommended to use TypeScript SDK in server-side applications.<br>
+Use front-end frameworks such as Angular at your own risk, as the application might be incompatible or cause a potential threat that the application user information (such as secret keys) might be revealed publicly in the browser.
+
+## NPM install (recommended)
+```sh
+npm install vrpayment
+```
+
+## Usage
+The library needs to be configured with your account's space id, user id, and secret key which are available in your [VRPay
+account dashboard](https://gateway.vr-payment.de/account/select). Set `space_id`, `user_id`, and `api_secret` to their values. You can also add custom default headers to the configuration.
+
+### Configuring a Service
+
+```typescript
+'use strict';
+import { VRPayment } from 'vrpayment';
+
+let spaceId: number = 405;
+let userId: number = 512;
+let apiSecret: string = 'FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=';
+
+let config = {
+    space_id: spaceId,
+    user_id: userId,
+    api_secret: apiSecret
+    default_headers: {
+        'x-meta-header-name-1': 'header-value-1',
+        'x-meta-header-name-2': 'header-value-2'
+    }
+}
+
+// Transaction Service
+let transactionService: VRPayment.api.TransactionService = new VRPayment.api.TransactionService(config);
+
+```
+
+To get started with sending transactions, please review the example below:
+
+```typescript
+'use strict';
+import { VRPayment } from 'vrpayment';
+
+let spaceId: number = 405;
+let userId: number = 512;
+let apiSecret: string = 'FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=';
+
+let config = {
+    space_id: spaceId,
+    user_id: userId,
+    api_secret: apiSecret
+}
+
+// Transaction Service
+let transactionService: VRPayment.api.TransactionService = new VRPayment.api.TransactionService(config);
+
+// TransactionPaymentPage Service
+let transactionPaymentPageService: VRPayment.api.TransactionPaymentPageService = new VRPayment.api.TransactionPaymentPageService(config);
+
+// LineItem of type PRODUCT
+let lineItem: VRPayment.model.LineItemCreate = new VRPayment.model.LineItemCreate();
+lineItem.name='Red T-Shirt';
+lineItem.uniqueId='5412';
+lineItem.sku='red-t-shirt-123';
+lineItem.quantity=1;
+lineItem.amountIncludingTax=3.50;
+lineItem.type=VRPayment.model.LineItemType.PRODUCT;
+
+// Transaction
+let transaction: VRPayment.model.TransactionCreate = new VRPayment.model.TransactionCreate();
+transaction.lineItems=[lineItem];
+transaction.autoConfirmationEnabled=true;
+transaction.currency='EUR';
+
+transactionService.create(spaceId, transaction).then((response) => {
+    let transactionCreate: VRPayment.model.Transaction = response.body;
+    transactionPaymentPageService.paymentPageUrl(spaceId, <number> transactionCreate.id).then(function (response) {
+        let pageUrl: string = response.body;
+        // window.location.href = pageUrl;
+    });
+});
+
+```
+
+### Configure connection timeout
+Connection timeout determines how long the request can take, before cutting off the connection. Same value applies both to inner 'Read timeout' and 'Connection timeout' of a [NPM request module](https://www.npmjs.com/package/request).
+
+Default connection timeout is 25s.
+
+
+Connection timeout can be set 2 ways:
+
+1. Via configuration property 'timeout' providing value in seconds.
+```
+let config = {
+    ... other properties ...
+    timeout: 15
+}
+let transactionService: VRPayment.api.TransactionService = new VRPayment.api.TransactionService(config);
+```
+
+2. Via service property 'timeout' providing value in seconds
+```
+let config = {
+    ... properties ...
+}
+let transactionService: VRPayment.api.TransactionService = new VRPayment.api.TransactionService(config);
+transactionService.timeout = 15;
+```
+
+### Integrating Webhook Payload Signing Mechanism into webhook callback handler
+
+The HTTP request which is sent for a state change of an entity now includes an additional field `state`, which provides information about the update of the monitored entity's state. This enhancement is a result of the implementation of our webhook encryption mechanism.
+
+Payload field `state` provides direct information about the state update of the entity, making additional API calls to retrieve the entity state redundant.
+
+#### ⚠️ Warning: Generic Pseudocode
+
+> **The provided pseudocode is intentionally generic and serves to illustrate the process of enhancing your API to leverage webhook payload signing. It is not a complete implementation.**
+>
+> Please ensure that you adapt and extend this code to meet the specific needs of your application, including appropriate security measures and error handling.
+For a detailed webhook payload signing mechanism understanding we highly recommend referring to our comprehensive
+[Webhook Payload Signing Documentation](https://gateway.vr-payment.de/doc/webhooks#_webhook_payload_signing_mechanism).
+```
+app.post('/webhook/callback', (req: Request, res: Response) => {
+    const requestPayload: string = req.body;
+    const signature: string | undefined = req.headers['x-signature'] as string;
+
+    if (!signature) {
+        // Make additional API call to retrieve the entity state
+        // ...
+    } else {
+        if (webhookEncryptionService().isContentValid(signature, requestPayload)) {
+            // Parse requestPayload to extract 'state' value
+            // Process entity's state change
+            // ...
+        }
+    }
+
+    // Process the received webhook data
+    // ...
+
+});
+```
+
+
+
+## License
+
+Please see the [license file](https://github.com/vr-payment/typescript-sdk/blob/master/LICENSE) for more information.
