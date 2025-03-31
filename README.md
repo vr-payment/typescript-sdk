@@ -1,11 +1,11 @@
-# VRPay TypeScript Library
+# VR Payment TypeScript Library
 
-The VRPay TypeScript library wraps around the VRPay API. This library facilitates your interaction with various
+The VR Payment TypeScript library wraps around the VR Payment API. This library facilitates your interaction with various
 services such as transactions, accounts, and subscriptions.
 
 ## Documentation
 
-[VRPay Web Service API](https://gateway.vr-payment.de/doc/api/web-service)
+[VR Payment Web Service API](https://gateway.vr-payment.de/doc/api/web-service)
 
 ## Requirements
 
@@ -26,7 +26,7 @@ npm install vrpayment
 ## Usage
 
 The library needs to be configured with your account's space id, user id, and secret key which are available in
-your [VRPay
+your [VR Payment
 account dashboard](https://gateway.vr-payment.de/account/select). Set `space_id`, `user_id`, and `api_secret` to their values.
 You can also add custom default headers to the configuration.
 
