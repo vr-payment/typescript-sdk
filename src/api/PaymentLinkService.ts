@@ -104,9 +104,9 @@ class PaymentLinkService {
         Object.assign(headers, options.headers);
 
         let defaultHeaders = {
-            "x-meta-sdk-version": "4.7.0",
+            "x-meta-sdk-version": "4.8.0",
             "x-meta-sdk-language": "typescript",
-            "x-meta-sdk-provider": "VRPay",
+            "x-meta-sdk-provider": "VR Payment",
             "x-meta-sdk-language-version": this.getVersion(),
         };
 
@@ -192,9 +192,9 @@ class PaymentLinkService {
         Object.assign(headers, options.headers);
 
         let defaultHeaders = {
-            "x-meta-sdk-version": "4.7.0",
+            "x-meta-sdk-version": "4.8.0",
             "x-meta-sdk-language": "typescript",
-            "x-meta-sdk-provider": "VRPay",
+            "x-meta-sdk-provider": "VR Payment",
             "x-meta-sdk-language-version": this.getVersion(),
         };
 
@@ -285,9 +285,9 @@ class PaymentLinkService {
         Object.assign(headers, options.headers);
 
         let defaultHeaders = {
-            "x-meta-sdk-version": "4.7.0",
+            "x-meta-sdk-version": "4.8.0",
             "x-meta-sdk-language": "typescript",
-            "x-meta-sdk-provider": "VRPay",
+            "x-meta-sdk-provider": "VR Payment",
             "x-meta-sdk-language-version": this.getVersion(),
         };
 
@@ -382,9 +382,9 @@ class PaymentLinkService {
         Object.assign(headers, options.headers);
 
         let defaultHeaders = {
-            "x-meta-sdk-version": "4.7.0",
+            "x-meta-sdk-version": "4.8.0",
             "x-meta-sdk-language": "typescript",
-            "x-meta-sdk-provider": "VRPay",
+            "x-meta-sdk-provider": "VR Payment",
             "x-meta-sdk-language-version": this.getVersion(),
         };
 
@@ -474,9 +474,9 @@ class PaymentLinkService {
         Object.assign(headers, options.headers);
 
         let defaultHeaders = {
-            "x-meta-sdk-version": "4.7.0",
+            "x-meta-sdk-version": "4.8.0",
             "x-meta-sdk-language": "typescript",
-            "x-meta-sdk-provider": "VRPay",
+            "x-meta-sdk-provider": "VR Payment",
             "x-meta-sdk-language-version": this.getVersion(),
         };
 
@@ -567,9 +567,9 @@ class PaymentLinkService {
         Object.assign(headers, options.headers);
 
         let defaultHeaders = {
-            "x-meta-sdk-version": "4.7.0",
+            "x-meta-sdk-version": "4.8.0",
             "x-meta-sdk-language": "typescript",
-            "x-meta-sdk-provider": "VRPay",
+            "x-meta-sdk-provider": "VR Payment",
             "x-meta-sdk-language-version": this.getVersion(),
         };
 

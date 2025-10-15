@@ -1,8 +1,8 @@
 {
     "name": "vrpayment",
-    "title": "VRPay",
-    "version": "4.7.0",
-    "description": "TypeScript/JavaScript client for VRPay",
+    "title": "VR Payment",
+    "version": "4.8.0",
+    "description": "TypeScript/JavaScript client for VR Payment",
     "homepage": "http://github.com/vr-payment/typescript-sdk",
     "repository": {
         "type": "git",
@@ -22,7 +22,7 @@
     },
     "author": "wallee AG",
     "license": "Apache-2.0",
-    "keywords": ["VRPay", "Payment", "Payment Integration"],
+    "keywords": ["VR Payment", "Payment", "Payment Integration"],
     "mocha": {
         "timeout": 30000
     },
