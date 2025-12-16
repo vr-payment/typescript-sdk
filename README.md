@@ -610,6 +610,16 @@ Web Api client: [*link*](https://gateway.vr-payment.de//api/client)<br>
   &nbsp;&nbsp;&nbsp;&nbsp;Search dunning flows
   <br><br>
 - <strong>ExpressCheckoutService</strong><br>
+  &nbsp;&nbsp;* <code>patchExpressCheckoutShippingAddressChange</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>PATCH</strong> /express-checkout/shipping/address-change
+  &nbsp;&nbsp;&nbsp;&nbsp;Change shipping address
+  <br><br>
+- <strong>ExpressCheckoutService</strong><br>
+  &nbsp;&nbsp;* <code>patchExpressCheckoutShippingMethodChange</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>PATCH</strong> /express-checkout/shipping/method-change
+  &nbsp;&nbsp;&nbsp;&nbsp;Change shipping method
+  <br><br>
+- <strong>ExpressCheckoutService</strong><br>
   &nbsp;&nbsp;* <code>postExpressCheckoutCreateSession</code>
   &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /express-checkout/create-session
   &nbsp;&nbsp;&nbsp;&nbsp;Create a new Express Checkout Session
@@ -2637,6 +2647,10 @@ Additional Api models documentation: [*link*](https://gateway.vr-payment.de/en-u
 * <strong>ExpressCheckoutSession</strong>
 * <strong>ExpressCheckoutSessionCreate</strong>
 * <strong>ExpressCheckoutSessionState</strong>
+* <strong>ExpressCheckoutShippingAddressChangeRequest</strong>
+* <strong>ExpressCheckoutShippingAddressChangeResponse</strong>
+* <strong>ExpressCheckoutShippingMethodChangeRequest</strong>
+* <strong>ExpressCheckoutShippingMethodChangeResponse</strong>
 * <strong>ExpressCheckoutShippingOption</strong>
 * <strong>ExpressCheckoutWalletType</strong>
 * <strong>ExternalTransferBankTransaction</strong>
